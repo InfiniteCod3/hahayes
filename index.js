@@ -40,7 +40,6 @@ function check_proxy(proxy) {
 	}, (err, res, body) => {
 		if (!err) {
 			validProxies.push(proxy);
-			log('(' + 'Proxies'.magenta + `)`.white + ` Adding new proxy: ` + `${proxy}`.green + ' to queue list.');
 		}
 	});
 }
