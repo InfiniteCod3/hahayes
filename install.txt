@@ -1,0 +1,14 @@
+ sudo apt install chromium
+ npm i colors
+    npm i request
+
+    npx playwright install-deps
+  
+    chmod +x fixedtls
+
+
+    ulimit -n 999999
+    
+    npm i
+
+    npm i playwright
