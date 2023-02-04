@@ -118,13 +118,6 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function log(string) {
-	let d = new Date();
-	let hours = (d.getHours() < 10 ? '0' : '') + d.getHours();
-	let minutes = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-	let seconds = (d.getSeconds() < 10 ? '0' : '') + d.getSeconds();
-	console.log(`(${hours}:${minutes}:${seconds}) - ${string}`);
-}
 
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
