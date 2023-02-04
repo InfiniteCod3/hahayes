@@ -1,3 +1,4 @@
+
 const playwright = require('playwright');
 const colors = require('colors');
 const {
@@ -153,7 +154,7 @@ function JSDetection(argument) {
 function solverInstance(args) {
 	return new Promise((resolve, reject) => {
 	
-		playwright.firefox.launch({
+		playwright.chromium.launch({
 			headless: true,
 
 			proxy: {
