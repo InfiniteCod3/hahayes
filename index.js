@@ -22,14 +22,6 @@ const methodT = process.argv[7]; // Flood Method
 const proxies = fs.readFileSync("proxy.txt", 'utf-8').toString().replace(/\r/g, '').split('\n');
 
 
-function log(string) {
-	let d = new Date();
-	let hours = (d.getHours() < 10 ? '0' : '') + d.getHours();
-	let minutes = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-	let seconds = (d.getSeconds() < 10 ? '0' : '') + d.getSeconds();
-	console.log(`(${hours}:${minutes}:${seconds}) - ${string}`);
-}
-
 function check_proxy(proxy) {
 	request({
 		url: "https://google.com/",
@@ -54,7 +46,7 @@ async function sessionIn() {
 				"Proxy": e
 		}).then((cookie, _) => {
 		}).catch((ee) => {
-			log(ee);
+			console.log('\x1b[33m%s\x1b[0m', 'hi!');
 		})
 	})
 }
